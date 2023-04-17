@@ -22,34 +22,45 @@ public class ProductController {
     @PostMapping
     public ResponseEntity<ResponseGeneric<ProductDTO>> createProduct(@RequestBody ProductDTO productDTO) {
 
-        productService.createProduct(productDTO);
-        ResponseGeneric<ProductDTO> responseGeneric = new ResponseGeneric<>(200, "success", productDTO);
-        return ResponseEntity.ok(responseGeneric);
+        ResponseGeneric<ProductDTO> productDTOs = productService.createProduct(productDTO);
+//        ResponseGeneric<ProductDTO> responseGeneric = new ResponseGeneric<>(200, "success", productDTO);
+        return ResponseEntity.ok(productDTOs);
     }
 
 
-//    public List<Product> getAllProduct() {
-//        return productService.getAllProduct();
-//    }
-
-//    @GetMapping
-//    public ResponseEntity<ResponseGeneric<List<ProductDTO>>> getAllProduct() {
-//        List<ProductDTO> productDTOs = productService.getAllProduct();
-//        ResponseGeneric<List<ProductDTO>> responseGeneric = new ResponseGeneric<>(200, "success", productDTOs);
-//        return ResponseEntity.ok(responseGeneric);
-//    }
-
-    @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id) {
-        return productService.getProductById(id);
+    @GetMapping
+    public ResponseEntity<ResponseGeneric<List<ProductDTO>>> getAllProduct() {
+        ResponseGeneric<List<ProductDTO>> productDTOs = productService.getAllProduct();
+        return ResponseEntity.ok(productDTOs);
     }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<ResponseGeneric<ProductDTO>> getProductById(@PathVariable Long id) {
+        ResponseGeneric<ProductDTO> productDTO = productService.getProductById(id);
+        return ResponseEntity.ok(productDTO);
+    }
+
+    @GetMapping("/product_name/{name}")
+    public ResponseEntity<ResponseGeneric<List<ProductDTO>>> getProductByName(@PathVariable String name) {
+        ResponseGeneric<List<ProductDTO>> productDTOs = productService.getProductByName(name);
+
+        return ResponseEntity.ok(productDTOs);
+    }
+
+//    @GetMapping("/product_category_name/{name}")
+//    public ResponseEntity<ResponseGeneric<List<ProductDTO>>> getProductByCategoryName(@PathVariable String name) {
+//        ResponseGeneric<List<ProductDTO>> productDTOs = productService.getProductByName(name);
+//
+//        return ResponseEntity.ok(productDTOs);
+//    }
+
 
     @PatchMapping("/{id}")
     public ResponseEntity<ResponseGeneric<ProductDTO>> updateProduct(@PathVariable Long id, @RequestBody ProductDTO productDTO) {
-        productService.updateProduct(id, productDTO);
-        ResponseGeneric<ProductDTO> responseGeneric = new ResponseGeneric<>(200, "success", productDTO);
-        return ResponseEntity.ok(responseGeneric);
+        ResponseGeneric<ProductDTO> updateProductDTO = productService.updateProduct(id, productDTO);
+        return ResponseEntity.ok(updateProductDTO);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteProduct(@PathVariable Long id) {
         ResponseGeneric<Map<String, Boolean>> responseGeneric = productService.deleteProduct(id);

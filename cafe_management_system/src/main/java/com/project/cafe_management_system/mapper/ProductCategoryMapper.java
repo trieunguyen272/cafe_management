@@ -16,10 +16,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class ProductCategoryMapper {
-    @Autowired
-    private ProductCategoryService productCategoryService;
-    @Autowired
-    private ProductService productService;
 
     public ProductCategoryDTO convertModelToDTO(ProductCategory productCategory) {
         ProductCategoryDTO productCategoryDTO = new ProductCategoryDTO();
@@ -29,5 +25,15 @@ public class ProductCategoryMapper {
 
 
         return productCategoryDTO;
+    }
+
+    public ProductCategory convertDTOToModel(ProductCategoryDTO productCategoryDTO) {
+        ProductCategory productCategory = new ProductCategory();
+
+        productCategory.setId(productCategoryDTO.getId());
+        productCategory.setProductCategoryName(productCategoryDTO.getProductCategoryName());
+
+
+        return productCategory;
     }
 }
