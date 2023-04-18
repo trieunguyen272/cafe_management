@@ -3,8 +3,11 @@ package com.project.cafe_management_system.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+import java.util.Date;
+
+
 @Entity
+@Data
 @Table(name = "users")
 public class User {
 
@@ -13,14 +16,14 @@ public class User {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "identify_id", nullable = false)
+    @JoinColumn(name = "identify_id", nullable = false, unique = true)
     private Identify identify;
 
-    @Column(name = "full_name")
-    private String fullName;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "date_of_birth")
-    private Data dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "address")
     private String address;
@@ -30,9 +33,6 @@ public class User {
     private UserRole userRole;
 
     @Column(name = "status")
-    private Enum status;
-
-
-
+    private Status status;
 
 }

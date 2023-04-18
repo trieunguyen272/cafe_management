@@ -1,7 +1,9 @@
 package com.project.cafe_management_system.service;
 
 import com.project.cafe_management_system.dto.UserRoleDTO;
+import com.project.cafe_management_system.exception.ResourceNotFoundException;
 import com.project.cafe_management_system.mapper.UserRoleMapper;
+import com.project.cafe_management_system.model.Identify;
 import com.project.cafe_management_system.model.UserRole;
 import com.project.cafe_management_system.repository.UserRoleRepository;
 import com.project.cafe_management_system.utils.ResponseGeneric;
@@ -19,6 +21,12 @@ public class UserRoleService {
 
     @Autowired
     private UserRoleRepository userRoleRepository;
+
+    public UserRole retrievedById(Long id){
+        UserRole userRole = userRoleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User role not exist with id: " + id));
+
+        return userRole;
+    }
 
     public ResponseGeneric<UserRoleDTO> createUserRole(UserRoleDTO userRoleDTO) {
         UserRole userRole = userRoleMapper.convertDTOToModel(userRoleDTO);

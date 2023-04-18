@@ -16,6 +16,6 @@ public class Identify {
     @Column(name = "password")
     private String password;
 
-    @OneToOne
-    private Identify identify;
+    @OneToOne(mappedBy = "identify")
+    private User user;
 }
