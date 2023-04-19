@@ -13,23 +13,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/identify")
 public class IdentifyController {
-    @Autowired
-    private IdentifyService identifyService;
-
-
-    @PostMapping
-    public ResponseEntity<ResponseGeneric<IdentifyDTO>> createIdentify(@RequestBody IdentifyDTO identifyDTO) {
-        ResponseGeneric<IdentifyDTO> identifyDTOs = identifyService.createIdentify(identifyDTO);
-
-        return ResponseEntity.ok(identifyDTOs);
-    }
-
-    @GetMapping
-    public ResponseEntity<ResponseGeneric<List<IdentifyDTO>>> getAllIdentify() {
-        ResponseGeneric<List<IdentifyDTO>> identifyDTOs = identifyService.getAllIdentify();
-
-        return ResponseEntity.ok(identifyDTOs);
-    }
+//    @Autowired
+//    private IdentifyService identifyService;
+//
+//
+//    @PostMapping
+//    public ResponseEntity<ResponseGeneric<IdentifyDTO>> createIdentify(@RequestBody IdentifyDTO identifyDTO) {
+//        ResponseGeneric<IdentifyDTO> identifyDTOs = identifyService.createIdentify(identifyDTO);
+//
+//        return ResponseEntity.ok(identifyDTOs);
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<ResponseGeneric<List<IdentifyDTO>>> getAllIdentify() {
+//        ResponseGeneric<List<IdentifyDTO>> identifyDTOs = identifyService.getAllIdentify();
+//
+//        return ResponseEntity.ok(identifyDTOs);
+//    }
 
 
 }

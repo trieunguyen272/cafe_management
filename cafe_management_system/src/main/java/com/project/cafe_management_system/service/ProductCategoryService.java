@@ -38,7 +38,10 @@ public class ProductCategoryService {
 
 
     public ResponseGeneric<Object> createProductCategory(ProductCategoryDTO productCategoryDTO) {
-        ProductCategory productCategory = productCategoryMapper.convertDTOToModel(productCategoryDTO);
+        ProductCategory productCategory = new ProductCategory();
+        productCategory.setProductCategoryName(productCategoryDTO.getProductCategoryName());
+
+//        ProductCategory productCategory = productCategoryMapper.convertDTOToModel(productCategoryDTO);
         productCategory = productCategoryRepository.save(productCategory);
         ProductCategoryDTO savedProductCategoryDTO = productCategoryMapper.convertModelToDTO(productCategory);
 

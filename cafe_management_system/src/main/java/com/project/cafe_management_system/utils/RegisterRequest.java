@@ -1,4 +1,4 @@
-package com.project.cafe_management_system.dto;
+package com.project.cafe_management_system.utils;
 
 import com.project.cafe_management_system.model.Status;
 import lombok.AllArgsConstructor;
@@ -9,22 +9,17 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class UserDTO {
-    private Long id;
+public class RegisterRequest {
 
-    private String identifyId;
-
+    private String username;
+    private String password;
     private String name;
-
-    private Date dateOfBirth;
-
     private String address;
-
+    private Date dateOfBirth;
     private Long userRoleId;
-
     private Status status;
 
 }
