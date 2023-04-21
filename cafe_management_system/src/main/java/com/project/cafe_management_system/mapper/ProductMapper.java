@@ -15,7 +15,7 @@ public class ProductMapper {
     public Product convertDTOToModel(ProductDTO productDTO) {
         Product product = new Product();
         
-        product.setId(productDTO.getId());
+
         product.setProductName(productDTO.getProductName());
         product.setProductCategory(productCategoryService.retrievedById(productDTO.getProductCategoryId()));
         product.setPrice(productDTO.getPrice());
@@ -25,7 +25,6 @@ public class ProductMapper {
 
         return product;
     }
-
     public ProductDTO convertModelToDTO(Product product) {
         ProductDTO productDTO = new ProductDTO();
 

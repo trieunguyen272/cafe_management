@@ -19,7 +19,7 @@ public class ProductCategory {
     @Column(name = "product_category_name", unique = true)
     private String productCategoryName;
 
-    @OneToMany(mappedBy = "productCategory")
+    @OneToMany(mappedBy = "productCategory", cascade = CascadeType.REMOVE)
     private List<Product> product;
 }
 
